@@ -1,0 +1,17 @@
+
+Curl Commands
+
+curl -d '{"title":"title1","author":"author1"}' -H "Content-Type: application/json" POST http://localhost:8080/book
+curl -d '{"title":"title2","author":"author2"}' -H "Content-Type: application/json" POST http://localhost:8080/book
+curl http://localhost:8080/book/1
+
+curl -d '{"title":"title22","author":"author22"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/book/2
+  
+curl -X DELETE http://localhost:8080/book/1
+
+
+----------------------
+hsearch
+hsearch-lib-replica
+hsearch-remote-replica
+------------------------
