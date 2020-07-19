@@ -31,7 +31,9 @@ public class HibernateUtil {
 				settings.put(Environment.HBM2DDL_AUTO, "update");
 				settings.put(Environment.SHOW_SQL, true);
 
-				settings.put("hibernate.search.default.directory_provider", "infinispan");
+				settings.put("hibernate.search.default.directory_provider", "filesystem");
+	            settings.put("hibernate.search.default.indexBase", "/home/office/Documents/lucence/indexes");
+				//settings.put("hibernate.search.default.directory_provider", "infinispan");
 				settings.put("hibernate.search.default.indexwriter.infostream", true);
 
 				registryBuilder.applySettings(settings);

@@ -69,6 +69,69 @@ public class EmployeeService {
 		}
 	}
 
+	public Department getDepartment() {
+		Session session = null;
+		Transaction transaction = null;
+		Department department = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.getTransaction();
+			transaction.begin();
+
+			department = (Department) session.get(Department.class, new Long(2));
+            System.out.println(department.getId() + " - " + department.getName());
+
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+		return department;
+	}
+	
+	public void addEmployee() {
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			System.out.println("inside addEmployee:::");
+			System.out.println("factoryAdd::"+HibernateUtil.getSessionFactory());
+			session = HibernateUtil.getSessionFactory().openSession();
+			System.out.println("sessionAdd::"+session);
+			transaction = session.getTransaction();
+			transaction.begin();
+
+			Department department = new Department();
+			department.setName("Dept1");
+			
+			Employee employee = new Employee();
+			employee.setName("Emp1 Sur1");
+			employee.setDesignation("Senior Software Engineer");
+			employee.setDepartment(department);
+
+			department.getEmployees().add(employee);
+			session.persist(department);
+
+			//department.getEmployees().add(employee);
+
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
 	public List<Department> searchData(String text) {
 		List<Department> departments = null;
 		Session session = null;

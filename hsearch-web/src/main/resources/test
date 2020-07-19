@@ -1,0 +1,8 @@
+drop table employee
+drop table department
+
+http://localhost:8080/createData
+http://localhost:8080/getDepartment
+http://localhost:8080/addEmployee
+http://localhost:8080/searchData?searchString=Nancy
+http://localhost:8080/searchData?searchString=Emp1
