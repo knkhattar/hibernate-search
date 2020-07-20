@@ -1,0 +1,431 @@
+searchString::Emp1
+2020-07-19 23:59:35 DEBUG TransactionImpl:55 - begin
+2020-07-19 23:59:35 DEBUG MassIndexerImpl:109 - Targets for indexing job: [class com.example.hsearch.model.Department]
+2020-07-19 23:59:35 DEBUG DirectoryBasedIndexManager:120 - Applying work via workspace holder of type class org.hibernate.search.backend.impl.lucene.WorkspaceHolder
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: Exception occurred org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+Primary Failure:
+	Entity com.example.hsearch.model.Department  Id null  Work Type  org.hibernate.search.backend.PurgeAllLuceneWork
+
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:117)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:203)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendQueueTask.applyUpdates(LuceneBackendQueueTask.java:81)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendQueueTask.run(LuceneBackendQueueTask.java:46)
+	at org.hibernate.search.backend.impl.lucene.SyncWorkProcessor$Consumer.applyChangesets(SyncWorkProcessor.java:166)
+	at org.hibernate.search.backend.impl.lucene.SyncWorkProcessor$Consumer.run(SyncWorkProcessor.java:152)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendQueueTask:83 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.optimize(DefaultBatchBackend.java:83)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.beforeBatch(BatchCoordinator.java:175)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.runWithErrorHandler(BatchCoordinator.java:97)
+	at org.hibernate.search.batchindexing.impl.ErrorHandledRunnable.run(ErrorHandledRunnable.java:32)
+	at org.hibernate.search.batchindexing.impl.MassIndexerImpl.startAndWait(MassIndexerImpl.java:211)
+	at com.example.hsearch.service.EmployeeService.searchData(EmployeeService.java:145)
+	at com.example.hsearch.controller.EmployeeController.index(EmployeeController.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:191)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:146)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:501)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 DEBUG TransactionImpl:55 - begin
+2020-07-19 23:59:35 DEBUG SQL:92 - select count(*) as y0_ from DEPARTMENT this_
+Hibernate: select count(*) as y0_ from DEPARTMENT this_
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 0
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: 
+2020-07-19 23:59:35 DEBUG IdentifierProducer:145 - going to fetch 3 primary keys
+2020-07-19 23:59:35 INFO  SimpleIndexingProgressMonitor:72 - HSEARCH000027: Going to reindex 3 entities
+2020-07-19 23:59:35 DEBUG SQL:92 - select this_.DPT_ID as y0_ from DEPARTMENT this_
+Hibernate: select this_.DPT_ID as y0_ from DEPARTMENT this_
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: 
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: 
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: 
+2020-07-19 23:59:35 DEBUG TransactionImpl:66 - committing
+2020-07-19 23:59:35 DEBUG TransactionImpl:55 - begin
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+2020-07-19 23:59:35 DEBUG SQL:92 - select this_.DPT_ID as DPT_ID1_0_1_, this_.NAME as NAME2_0_1_, employees2_.DPT_ID as DPT_ID4_1_3_, employees2_.EMP_ID as EMP_ID1_1_3_, employees2_.EMP_ID as EMP_ID1_1_0_, employees2_.DPT_ID as DPT_ID4_1_0_, employees2_.DESIGNATION as DESIGNAT2_1_0_, employees2_.NAME as NAME3_1_0_ from DEPARTMENT this_ left outer join EMPLOYEE employees2_ on this_.DPT_ID=employees2_.DPT_ID where this_.DPT_ID in (?, ?, ?)
+Hibernate: select this_.DPT_ID as DPT_ID1_0_1_, this_.NAME as NAME2_0_1_, employees2_.DPT_ID as DPT_ID4_1_3_, employees2_.EMP_ID as EMP_ID1_1_3_, employees2_.EMP_ID as EMP_ID1_1_0_, employees2_.DPT_ID as DPT_ID4_1_0_, employees2_.DESIGNATION as DESIGNAT2_1_0_, employees2_.NAME as NAME3_1_0_ from DEPARTMENT this_ left outer join EMPLOYEE employees2_ on this_.DPT_ID=employees2_.DPT_ID where this_.DPT_ID in (?, ?, ?)
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 0
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: EntityKey[com.example.hsearch.model.Employee#1], EntityKey[com.example.hsearch.model.Department#1]
+2020-07-19 23:59:35 DEBUG Loader:1350 - Found row of collection: [com.example.hsearch.model.Department.employees#1]
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 1
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: EntityKey[com.example.hsearch.model.Employee#2], EntityKey[com.example.hsearch.model.Department#1]
+2020-07-19 23:59:35 DEBUG Loader:1350 - Found row of collection: [com.example.hsearch.model.Department.employees#1]
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 2
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: EntityKey[com.example.hsearch.model.Employee#3], EntityKey[com.example.hsearch.model.Department#2]
+2020-07-19 23:59:35 DEBUG Loader:1350 - Found row of collection: [com.example.hsearch.model.Department.employees#2]
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 3
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: EntityKey[com.example.hsearch.model.Employee#4], EntityKey[com.example.hsearch.model.Department#2]
+2020-07-19 23:59:35 DEBUG Loader:1350 - Found row of collection: [com.example.hsearch.model.Department.employees#2]
+2020-07-19 23:59:35 DEBUG Loader:384 - Result set row: 4
+2020-07-19 23:59:35 DEBUG Loader:1533 - Result row: EntityKey[com.example.hsearch.model.Employee#5], EntityKey[com.example.hsearch.model.Department#3]
+2020-07-19 23:59:35 DEBUG Loader:1350 - Found row of collection: [com.example.hsearch.model.Department.employees#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#1]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#1]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Department#1]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Department#1]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#2]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#2]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Department#2]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Department#2]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#4]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#4]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#5]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#5]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Department#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Department#3]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:394 - 3 collections were found in result set for role: com.example.hsearch.model.Department.employees
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:265 - Collection fully initialized: [com.example.hsearch.model.Department.employees#3]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:265 - Collection fully initialized: [com.example.hsearch.model.Department.employees#2]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:265 - Collection fully initialized: [com.example.hsearch.model.Department.employees#1]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:394 - 3 collections initialized for role: com.example.hsearch.model.Department.employees
+2020-07-19 23:59:35 DEBUG DistinctResultTransformer:389 - Transformed: 5 rows to: 3 distinct results
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationExecutorSelector$AddSelectionExecutor.performStreamOperation(StreamingOperationExecutorSelector.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.executeWork(StreamingOperationDispatcher.java:55)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.dispatch(StreamingOperationDispatcher.java:39)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.enqueueAsyncWork(DefaultBatchBackend.java:52)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.index(IdentifierConsumerDocumentProducer.java:295)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.indexAllQueue(IdentifierConsumerDocumentProducer.java:221)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadList(IdentifierConsumerDocumentProducer.java:175)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadAllFromQueue(IdentifierConsumerDocumentProducer.java:139)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.run(IdentifierConsumerDocumentProducer.java:119)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationExecutorSelector$AddSelectionExecutor.performStreamOperation(StreamingOperationExecutorSelector.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.executeWork(StreamingOperationDispatcher.java:55)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.dispatch(StreamingOperationDispatcher.java:39)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.enqueueAsyncWork(DefaultBatchBackend.java:52)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.index(IdentifierConsumerDocumentProducer.java:295)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.indexAllQueue(IdentifierConsumerDocumentProducer.java:221)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadList(IdentifierConsumerDocumentProducer.java:175)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadAllFromQueue(IdentifierConsumerDocumentProducer.java:139)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.run(IdentifierConsumerDocumentProducer.java:119)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationExecutorSelector$AddSelectionExecutor.performStreamOperation(StreamingOperationExecutorSelector.java:109)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.executeWork(StreamingOperationDispatcher.java:55)
+	at org.hibernate.search.backend.impl.StreamingOperationDispatcher.dispatch(StreamingOperationDispatcher.java:39)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.enqueueAsyncWork(DefaultBatchBackend.java:52)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.index(IdentifierConsumerDocumentProducer.java:295)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.indexAllQueue(IdentifierConsumerDocumentProducer.java:221)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadList(IdentifierConsumerDocumentProducer.java:175)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.loadAllFromQueue(IdentifierConsumerDocumentProducer.java:139)
+	at org.hibernate.search.batchindexing.impl.IdentifierConsumerDocumentProducer.run(IdentifierConsumerDocumentProducer.java:119)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 DEBUG TransactionImpl:98 - rolling back
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+2020-07-19 23:59:35 DEBUG BatchIndexingWorkspace:127 - All work for type com.example.hsearch.model.Department has been produced
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.optimize(DefaultBatchBackend.java:83)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.afterBatch(BatchCoordinator.java:147)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.runWithErrorHandler(BatchCoordinator.java:99)
+	at org.hibernate.search.batchindexing.impl.ErrorHandledRunnable.run(ErrorHandledRunnable.java:32)
+	at org.hibernate.search.batchindexing.impl.MassIndexerImpl.startAndWait(MassIndexerImpl.java:211)
+	at com.example.hsearch.service.EmployeeService.searchData(EmployeeService.java:145)
+	at com.example.hsearch.controller.EmployeeController.index(EmployeeController.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:191)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:146)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:501)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 ERROR LogErrorHandler:70 - HSEARCH000058: HSEARCH000117: IOException on the IndexWriter
+org.apache.lucene.store.LockObtainFailedException: lock instance already assigned
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.failLockAcquire(CommonLockObtainUtils.java:33)
+	at org.infinispan.lucene.impl.CommonLockObtainUtils.attemptObtain(CommonLockObtainUtils.java:20)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:35)
+	at org.infinispan.lucene.impl.BaseLockFactory.obtainLock(BaseLockFactory.java:18)
+	at org.infinispan.lucene.impl.DirectoryLucene.obtainLock(DirectoryLucene.java:152)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:776)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.createNewIndexWriter(IndexWriterHolder.java:126)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:92)
+	at org.hibernate.search.backend.impl.lucene.IndexWriterHolder.getIndexWriter(IndexWriterHolder.java:111)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriter(AbstractWorkspaceImpl.java:113)
+	at org.hibernate.search.backend.impl.lucene.AbstractWorkspaceImpl.getIndexWriterDelegate(AbstractWorkspaceImpl.java:214)
+	at org.hibernate.search.backend.impl.lucene.LuceneBackendTaskStreamer.doWork(LuceneBackendTaskStreamer.java:44)
+	at org.hibernate.search.backend.impl.lucene.WorkspaceHolder.applyStreamWork(WorkspaceHolder.java:74)
+	at org.hibernate.search.indexes.spi.DirectoryBasedIndexManager.performStreamOperation(DirectoryBasedIndexManager.java:109)
+	at org.hibernate.search.backend.impl.batch.DefaultBatchBackend.flush(DefaultBatchBackend.java:75)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.afterBatch(BatchCoordinator.java:149)
+	at org.hibernate.search.batchindexing.impl.BatchCoordinator.runWithErrorHandler(BatchCoordinator.java:99)
+	at org.hibernate.search.batchindexing.impl.ErrorHandledRunnable.run(ErrorHandledRunnable.java:32)
+	at org.hibernate.search.batchindexing.impl.MassIndexerImpl.startAndWait(MassIndexerImpl.java:211)
+	at com.example.hsearch.service.EmployeeService.searchData(EmployeeService.java:145)
+	at com.example.hsearch.controller.EmployeeController.index(EmployeeController.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:763)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1631)
+	at org.eclipse.jetty.websocket.server.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:226)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1618)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:549)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:602)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:235)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1610)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:233)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1369)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:188)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:489)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1580)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:186)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1284)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:191)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:146)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:127)
+	at org.eclipse.jetty.server.Server.handle(Server.java:501)
+	at org.eclipse.jetty.server.HttpChannel.lambda$handle$1(HttpChannel.java:383)
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:556)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:375)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:272)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:311)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$1.run(ChannelEndPoint.java:104)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-19 23:59:35 ERROR LuceneBackendTaskStreamer:46 - HSEARCH000072: Couldn't open the IndexWriter because of previous error: operation skipped, index ouf of sync!
+2020-07-19 23:59:35 INFO  SimpleIndexingProgressMonitor:77 - HSEARCH000028: Reindexed 3 entities
+2020-07-19 23:59:35 DEBUG fulltext_query:98 - HSEARCH000274: Executing Lucene query 'name:emp1 employees.name:emp1'
+2020-07-19 23:59:35 DEBUG ManagedMultiReader:211 - Closing MultiReader: ManagedMultiReader [readersForClosing=[StandardDirectoryReader(segments_7:24 _5(5.5.5):C3)], readerProviders=[org.hibernate.search.indexes.impl.SharingBufferReaderProvider@5d96f6ec]]
+2020-07-19 23:59:35 DEBUG SQL:92 - select department0_.DPT_ID as DPT_ID1_0_0_, department0_.NAME as NAME2_0_0_, employees1_.DPT_ID as DPT_ID4_1_1_, employees1_.EMP_ID as EMP_ID1_1_1_, employees1_.EMP_ID as EMP_ID1_1_2_, employees1_.DPT_ID as DPT_ID4_1_2_, employees1_.DESIGNATION as DESIGNAT2_1_2_, employees1_.NAME as NAME3_1_2_ from DEPARTMENT department0_ left outer join EMPLOYEE employees1_ on department0_.DPT_ID=employees1_.DPT_ID where department0_.DPT_ID=?
+Hibernate: select department0_.DPT_ID as DPT_ID1_0_0_, department0_.NAME as NAME2_0_0_, employees1_.DPT_ID as DPT_ID4_1_1_, employees1_.EMP_ID as EMP_ID1_1_1_, employees1_.EMP_ID as EMP_ID1_1_2_, employees1_.DPT_ID as DPT_ID4_1_2_, employees1_.DESIGNATION as DESIGNAT2_1_2_, employees1_.NAME as NAME3_1_2_ from DEPARTMENT department0_ left outer join EMPLOYEE employees1_ on department0_.DPT_ID=employees1_.DPT_ID where department0_.DPT_ID=?
+2020-07-19 23:59:35 DEBUG ResultSetProcessorImpl:120 - Starting ResultSet row #0
+2020-07-19 23:59:35 DEBUG EntityReferenceInitializerImpl:126 - On call to EntityIdentifierReaderImpl#resolve, EntityKey was already known; should only happen on root returns with an optional identifier specified
+2020-07-19 23:59:35 DEBUG CollectionReferenceInitializerImpl:60 - Found row of collection: [com.example.hsearch.model.Department.employees#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Department#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Department#3]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:141 - Resolving associations for [com.example.hsearch.model.Employee#5]
+2020-07-19 23:59:35 DEBUG TwoPhaseLoad:281 - Done materializing entity [com.example.hsearch.model.Employee#5]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:394 - 1 collections were found in result set for role: com.example.hsearch.model.Department.employees
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:265 - Collection fully initialized: [com.example.hsearch.model.Department.employees#3]
+2020-07-19 23:59:35 DEBUG CollectionLoadContext:394 - 1 collections initialized for role: com.example.hsearch.model.Department.employees
+2020-07-19 23:59:35 DEBUG ResourceRegistryStandardImpl:84 - HHH000387: ResultSet's statement was not registered
+2020-07-19 23:59:35 DEBUG AbstractLoadPlanBasedEntityLoader:189 - Done entity load : com.example.hsearch.model.Department#3
+2020-07-19 23:59:35 DEBUG TransactionImpl:66 - committing
+2020-07-19 23:59:35 DEBUG AbstractFlushingEventListener:132 - Processing flush-time cascades
+2020-07-19 23:59:35 DEBUG AbstractFlushingEventListener:174 - Dirty checking collections
+2020-07-19 23:59:35 DEBUG Collections:189 - Collection found: [com.example.hsearch.model.Department.employees#3], was: [com.example.hsearch.model.Department.employees#3] (initialized)
+2020-07-19 23:59:35 DEBUG AbstractFlushingEventListener:106 - Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+2020-07-19 23:59:35 DEBUG AbstractFlushingEventListener:113 - Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+2020-07-19 23:59:35 DEBUG EntityPrinter:102 - Listing entities:
+2020-07-19 23:59:35 DEBUG EntityPrinter:109 - com.example.hsearch.model.Employee{name=Emp1 Sur1, id=5, designation=Senior Software Engineer, department=com.example.hsearch.model.Department#3}
+2020-07-19 23:59:35 DEBUG EntityPrinter:109 - com.example.hsearch.model.Department{name=Dept1, id=3, employees=[com.example.hsearch.model.Employee#5]}
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+2020-07-19 23:59:35 DEBUG LogicalConnectionManagedImpl:161 - Initiating JDBC connection release from afterTransaction
+list size::1
+Department Name:-Dept1
+	Employee Name:- Emp1 Sur1
+[INFO] -XYZ-A11130978: sending stable msg to -XYZ-A11158714: -XYZ-A11158714: [40], -XYZ-A11130978: [126]
+[INFO] -XYZ-A11130978: found no inconsistent views: [-XYZ-A11158714|1]: [(2) -XYZ-A11158714, -XYZ-A11130978]
+
+
