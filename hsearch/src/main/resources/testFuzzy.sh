@@ -1,5 +1,14 @@
 #!/bin/sh
 echo "script started.............."
+echo "Deleting all books first"
+echo
+curl -X DELETE http://localhost:8080/book
+echo
+echo "get all books ..."
+echo
+curl http://localhost:8080/book
+echo
+echo
 echo "adding book1..."
 echo
 curl -d '{"title":"titleOne","author":"authorOne"}' -H "Content-Type: application/json" -X POST http://localhost:8080/book
@@ -12,7 +21,7 @@ curl -d '{"title":"title3","author":"author3"}' -H "Content-Type: application/js
 echo
 echo "Updating book2"
 echo
-curl -d '{"title":"2222","author":"2222"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/book/2
+curl -d '{"title":"2222","author":"iPhone"}' -H 'Content-Type: application/json' -X PUT http://localhost:8080/book/2
 echo
 echo "deleting book 3"
 echo
@@ -23,7 +32,18 @@ echo
 curl http://localhost:8080/book
 echo
 echo
-echo searching author 2222....................
-curl http://localhost:8080/book/search/2222
+echo searching author iPhaen....................
+curl http://localhost:8080/book/search/iPhaen
 echo
+echo
+echo
+echo searching author iPhone....................
+curl http://localhost:8080/book/search/iPhone
+echo
+echo
+echo
+echo searching author iPhaaaen....................
+curl http://localhost:8080/book/search/iPhaaaen
+echo
+
 echo script ends

@@ -37,9 +37,9 @@ public class BookController {
 
    /*---Get a book by id---*/
    @GetMapping("/book/search/{queryString}")
-   public ResponseEntity<Book> search(@PathVariable("queryString") String queryString) {
-      Book book = bookService.search(queryString);
-      return ResponseEntity.ok().body(book);
+   public ResponseEntity<List<Book>> search(@PathVariable("queryString") String queryString) {
+	   List<Book> books = bookService.search(queryString);
+      return ResponseEntity.ok().body(books);
    }
    
    /*---get all books---*/
@@ -62,4 +62,12 @@ public class BookController {
       bookService.delete(id);
       return ResponseEntity.ok().body("Book has been deleted successfully.");
    }
+   
+   /*---Delete a book by id---*/
+   @DeleteMapping("/book")
+   public ResponseEntity<?> deleteAll() {
+      bookService.deleteAll();
+      return ResponseEntity.ok().body("All books have been deleted successfully.");
+   }
+   
 }

@@ -28,7 +28,7 @@ public class BookServiceImp implements BookService {
    }
    
    @Override
-   public Book search(String queryString) {
+   public List<Book> search(String queryString) {
       return bookDao.search(queryString);
    }
    
@@ -48,5 +48,11 @@ public class BookServiceImp implements BookService {
    public void delete(long id) {
       bookDao.delete(id);
    }
+
+@Override
+public void deleteAll() {
+	bookDao.deleteAll();
+	
+}
 
 }

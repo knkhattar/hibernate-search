@@ -47,10 +47,10 @@ public class AppConfig {
 
 		props.put(SHOW_SQL, env.getProperty("hibernate.show_sql"));
 		props.put(HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));
-		props.put(DIALECT, "org.hibernate.dialect.H2Dialect");
-		props.put("hibernate.search.default.directory_provider", "filesystem");
-		props.put("hibernate.search.default.indexBase", "/home/office/Documents/lucence/indexes");
-		props.put("hibernate.search.default.indexwriter.infostream", "true");
+		props.put(DIALECT, env.getProperty("hibernate.dialect"));
+		props.put("hibernate.search.default.directory_provider", env.getProperty("hibernate.search.default.directory_provider"));
+		props.put("hibernate.search.default.indexBase", env.getProperty("hibernate.search.default.indexBase"));
+		props.put("hibernate.search.default.indexwriter.infostream", env.getProperty("hibernate.search.default.indexwriter.infostream"));
 
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setPackagesToScan("com.example.hsearch.model");

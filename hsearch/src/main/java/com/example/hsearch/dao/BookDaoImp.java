@@ -9,6 +9,9 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,9 +35,32 @@ public class BookDaoImp implements BookDao {
    }
    
    @Override
-   public Book search(String queryString) {
-	   long id = 1;
-	   return sessionFactory.getCurrentSession().get(Book.class, id);
+   public List<Book> search(String queryString) {
+	   Session session = sessionFactory.getCurrentSession();
+	   
+		FullTextSession fullTextSession = Search.getFullTextSession(session);
+//		try {
+//			fullTextSession.createIndexer().startAndWait();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+		QueryBuilder qb = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(Book.class).get();
+
+		// Create lucene query
+		// Set indexed field
+		org.apache.lucene.search.Query lucenceQuery = qb.keyword().onFields("title", "author").matching(queryString)
+				.createQuery();
+
+		org.apache.lucene.search.Query fuzzyQuery = qb.keyword().fuzzy().withEditDistanceUpTo(2).withPrefixLength(0).
+				onFields("title", "author").matching(queryString).createQuery();
+
+		@SuppressWarnings("unchecked")
+		Query<Book> query = fullTextSession.createFullTextQuery(fuzzyQuery, Book.class);
+		List<Book> books = query.getResultList();
+		System.out.println("books.size():::"+books.size());
+	   return books;
    }
 
    @Override
@@ -64,4 +90,16 @@ public class BookDaoImp implements BookDao {
       session.delete(book);
    }
 
+   @Override
+   public void deleteAll() {
+      Session session = sessionFactory.getCurrentSession();
+      String sql = "DELETE FROM Book";
+      Query query = session.createQuery(sql);
+       int row = query.executeUpdate();
+       if (row == 0)
+           System.out.println("Didn't delete any row!");
+       else
+           System.out.println("Deleted row" + row);
+   }
+   
 }
