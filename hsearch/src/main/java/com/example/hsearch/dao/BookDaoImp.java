@@ -30,6 +30,12 @@ public class BookDaoImp implements BookDao {
    public Book get(long id) {
       return sessionFactory.getCurrentSession().get(Book.class, id);
    }
+   
+   @Override
+   public Book search(String queryString) {
+	   long id = 1;
+	   return sessionFactory.getCurrentSession().get(Book.class, id);
+   }
 
    @Override
    public List<Book> list() {

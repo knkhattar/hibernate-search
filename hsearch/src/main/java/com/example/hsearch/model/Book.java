@@ -5,13 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
 @Entity(name = "Book")
+@Indexed
 public class Book {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
+   @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
    private String title;
+   @Field(index = Index.YES, analyze = Analyze.YES, store = Store.YES)
    private String author;
 
    public Long getId() {

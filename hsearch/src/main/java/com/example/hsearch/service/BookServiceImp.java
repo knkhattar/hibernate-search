@@ -26,7 +26,12 @@ public class BookServiceImp implements BookService {
    public Book get(long id) {
       return bookDao.get(id);
    }
-
+   
+   @Override
+   public Book search(String queryString) {
+      return bookDao.search(queryString);
+   }
+   
    @Override
    public List<Book> list() {
       return bookDao.list();

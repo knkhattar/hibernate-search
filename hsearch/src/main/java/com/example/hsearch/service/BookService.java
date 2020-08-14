@@ -8,6 +8,7 @@ public interface BookService {
 
    long save(Book book);
    Book get(long id);
+   Book search(String queryString);
    List<Book> list();
    void update(long id, Book book);
    void delete(long id);

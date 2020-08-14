@@ -2,12 +2,14 @@ package com.example.hsearch.config;
 
 import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
 import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
+import static org.hibernate.cfg.AvailableSettings.DIALECT;
 
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
@@ -25,10 +27,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScans(value = { @ComponentScan("com.example.hsearch.dao"), @ComponentScan("com.example.hsearch.service") })
 public class AppConfig {
 
-	private static final String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/HSEARCH";
-	private static final String USER = "user1";
-	private static final String PASS = "password1";
+	@Value( "${db.driver}" )
+	private  String DRIVER_CLASS_NAME;
+	@Value( "${db.url}" )
+	private   String URL;
+	@Value( "${db.user}" )
+	private   String USER;
+	@Value( "${db.password}" )
+	private   String PASS;
+	
 	@Autowired
 	private Environment env;
 
@@ -40,6 +47,10 @@ public class AppConfig {
 
 		props.put(SHOW_SQL, env.getProperty("hibernate.show_sql"));
 		props.put(HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));
+		props.put(DIALECT, "org.hibernate.dialect.H2Dialect");
+		props.put("hibernate.search.default.directory_provider", "filesystem");
+		props.put("hibernate.search.default.indexBase", "/home/office/Documents/lucence/indexes");
+		props.put("hibernate.search.default.indexwriter.infostream", "true");
 
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setPackagesToScan("com.example.hsearch.model");
@@ -55,12 +66,12 @@ public class AppConfig {
 		return transactionManager;
 	}
 
-	public static DataSource getDataSource() {
+	public  DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(DRIVER_CLASS_NAME);
-		dataSource.setUrl(URL);
-		dataSource.setUsername(USER);
-		dataSource.setPassword(PASS);
+		dataSource.setDriverClassName(this.DRIVER_CLASS_NAME);
+		dataSource.setUrl(this.URL);
+		dataSource.setUsername(this.USER);
+		dataSource.setPassword(this.PASS);
 		return dataSource;
 	}
 

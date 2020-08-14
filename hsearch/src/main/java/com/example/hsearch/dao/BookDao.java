@@ -9,6 +9,7 @@ public interface BookDao {
    long save(Book book);
 
    Book get(long id);
+   Book search(String queryString);
 
    List<Book> list();
 

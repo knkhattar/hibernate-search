@@ -35,6 +35,13 @@ public class BookController {
       return ResponseEntity.ok().body(book);
    }
 
+   /*---Get a book by id---*/
+   @GetMapping("/book/search/{queryString}")
+   public ResponseEntity<Book> search(@PathVariable("queryString") String queryString) {
+      Book book = bookService.search(queryString);
+      return ResponseEntity.ok().body(book);
+   }
+   
    /*---get all books---*/
    @GetMapping("/book")
    public ResponseEntity<List<Book>> list() {
