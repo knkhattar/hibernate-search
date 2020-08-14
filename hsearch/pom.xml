@@ -23,17 +23,6 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.10.RELEASE</version>
 		</dependency>
-		<!-- Hibernate ORM -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.11.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mchange</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>0.9.5.2</version>
-		</dependency>
 		<!-- Jackson API for JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -48,7 +37,17 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- Infinispan integration: -->
+		<!-- hibernate search and Infinispan integration: -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.12.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.8.2.Final</version>
+		</dependency>
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-directory-provider</artifactId>
@@ -59,7 +58,7 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.199</version>
 		</dependency>
-		
+		<!-- hibernate search and Infinispan integration: END -->
 	</dependencies>
 	<build>
 		<plugins>
