@@ -17,3 +17,23 @@ hsearch-lib-replica
 hsearch-remote-replica
 hsearch45-lib-replica
 ------------------------
+
+CREATE TABLE BOOK(
+    "ID" BIGINT NOT NULL AUTO_INCREMENT,
+    "AUTHOR" VARCHAR(255),
+    "TITLE" VARCHAR(255)
+);
+---------------------------------------------
+1. repl-write-test.sh
+   . test-pod1.sh
+      run server on port 8080
+      add book1
+      add book2
+      add book3
+      search book 2
+   . test-pod2.sh
+      run server on port 8081
+      search book2
+      add book 4
+      search book4 on pod1
+      

@@ -49,8 +49,11 @@ public class AppConfig {
 		props.put(HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));
 		props.put(DIALECT, env.getProperty("hibernate.dialect"));
 		props.put("hibernate.search.default.directory_provider", env.getProperty("hibernate.search.default.directory_provider"));
-		props.put("hibernate.search.default.indexBase", env.getProperty("hibernate.search.default.indexBase"));
+		//props.put("hibernate.search.default.indexBase", env.getProperty("hibernate.search.default.indexBase"));
 		props.put("hibernate.search.default.indexwriter.infostream", env.getProperty("hibernate.search.default.indexwriter.infostream"));
+		props.put("hibernate.search.infinispan.configuration_resourcename", "infinispan-config-filesystem.xml");
+		//props.put("hibernate.search.infinispan.configuration_resourcename", "infinispan-config-db.xml");
+		props.put("hibernate.search.default.exclusive_index_use","false");
 
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setPackagesToScan("com.example.hsearch.model");
