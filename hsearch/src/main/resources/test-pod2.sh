@@ -11,7 +11,7 @@ curl http://localhost:8081/book/search/iPhaen
 echo
 echo "adding book4 on pod2..."
 echo
-curl -d '{"title":"Pod2Title","author":"Pod2Author"}' -H "Content-Type: application/json" -X POST http://localhost:8080/book
+curl -d '{"title":"Pod2Title","author":"Pod2Author"}' -H "Content-Type: application/json" -X POST http://localhost:8081/book
 echo
 echo searching author Pod2Authar on Pod2....................
 curl http://localhost:8081/book/search/Pod2Authar
