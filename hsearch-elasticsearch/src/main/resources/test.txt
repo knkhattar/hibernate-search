@@ -1,0 +1,12 @@
+Download 
+	https://www.elastic.co/downloads/past-releases/elasticsearch-5-6-16
+start elastic search
+	 cd /home/office/softwarekk/elasticsearch-5.6.16/bin
+	 ./elasticsearch
+	 it runs it on localhost:9200
+	 
+CREATE TABLE BOOK(
+    "ID" BIGINT NOT NULL AUTO_INCREMENT,
+    "AUTHOR" VARCHAR(255),
+    "TITLE" VARCHAR(255)
+);	 
