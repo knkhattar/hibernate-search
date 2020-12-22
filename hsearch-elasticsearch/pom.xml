@@ -54,7 +54,11 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.199</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-elasticsearch</artifactId>
+			<version>5.11.7.Final</version>
+		</dependency>
 		<!-- hibernate search and Infinispan integration: END -->
 	</dependencies>
 	<build>

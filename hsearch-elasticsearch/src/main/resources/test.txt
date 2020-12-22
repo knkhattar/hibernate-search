@@ -5,8 +5,13 @@ start elastic search
 	 ./elasticsearch
 	 it runs it on localhost:9200
 	 
+After insertion book record can be viewed here
+	http://localhost:9200/_search	 
+	 
 CREATE TABLE BOOK(
     "ID" BIGINT NOT NULL AUTO_INCREMENT,
     "AUTHOR" VARCHAR(255),
     "TITLE" VARCHAR(255)
 );	 
+
+
